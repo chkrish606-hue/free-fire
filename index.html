@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP Panel Shop</title>
+    <style>
+        :root {
+            --bg-color: #080711;
+            --card-bg: #0e0d21;
+            --input-bg: #13122b;
+            --border-color: #232247;
+            --text-main: #ffffff;
+            --text-sub: #8e8ea8;
+            --btn-grad: linear-gradient(135deg, #4f46e5, #06b6d4);
+            --online-color: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Card Setup */
+        .auth-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+            background: radial-gradient(circle, #2d2b69 0%, #0e0d21 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #3b3978;
+        }
+
+        .logo h1 {
+            font-size: 26px;
+            color: #60a5fa;
+            font-weight: 900;
+        }
+
+        .brand-title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: var(--text-sub);
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+
+        /* Inputs */
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            background: var(--btn-grad);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Dashboard Setup */
+        #dashboard-page {
+            max-width: 900px;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .wallet-box {
+            background: var(--input-bg);
+            padding: 8px 15px;
+            border-radius: 8px;
+            color: var(--online-color);
+            font-weight: bold;
+            border: 1px solid var(--border-color);
+        }
+
+        .prod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .prod-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .badge-online {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--online-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .prod-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .feature-item {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. LOGIN PAGE -->
+    <div id="login-page" class="page active">
+        <div class="auth-card">
+            <div class="logo">
+                <h1>KP</h1>
+            </div>
+            <div class="brand-title">KP PANEL <span style="color:#60a5fa">SHOP</span></div>
+            <div class="subtitle">KP PANEL MEANS THE HARDCORE LAYER OF TRUST</div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label>USERNAME OR EMAIL</label>
+                    <input type="text" placeholder="Enter your username or email" required>
+                </div>
+                <div class="input-group">
+                    <label>PASSWORD</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn-primary">SIGN IN NOW</button>
+            </form>
+
+            <button class="btn-secondary" onclick="showPage('register-page')">CREATE NEW ACCOUNT</button>
+        </div>
+    </div>
+
+    <!-- 2. REGISTER PAGE -->
+    <div id="register-page" class="page">
+        <div class="auth-card">
+            <div class="logo">
+                <h1>KP</h1>
+            </div>
+            <div class="brand-title">Create <span style="color:#60a5fa">Account</span></div>
+            <div class="subtitle">Join KP PANEL Shop — The Hardcore Layer of Trust</div>
+
+            <form id="register-form">
+                <div class="input-group">
+                    <label>USERNAME *</label>
+                    <input type="text" placeholder="Choose a unique username" required>
+                </div>
+                <div class="input-group">
+                    <label>EMAIL (OPTIONAL)</label>
+                    <input type="email" placeholder="yourname@gmail.com">
+                </div>
+                <div class="input-group">
+                    <label>PASSWORD *</label>
+                    <input type="password" placeholder="Create password (min 6 chars)" required>
+                </div>
+                <button type="submit" class="btn-primary">REGISTER ACCOUNT NOW</button>
+            </form>
+
+            <button class="btn-secondary" onclick="showPage('login-page')">ALREADY HAVE AN ACCOUNT? SIGN IN</button>
+        </div>
+    </div>
+
+    <!-- 3. DASHBOARD PAGE -->
+    <div id="dashboard-page" class="page">
+        <div class="dash-header">
+            <div>
+                <span style="font-weight: 800; font-size: 18px;">KP PANEL</span>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="wallet-box">₹35.00</div>
+                <button class="btn-secondary" style="padding: 8px 12px;" onclick="showPage('login-page')">Logout</button>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 20px;">Browse Products</h3>
+
+        <div class="prod-grid">
+            <div class="prod-card">
+                <span class="badge-online">● ONLINE</span>
+                <div class="prod-title">BALA MOD MENU PRO</div>
+                <div class="feature-item">⚡ Aimbot 100%</div>
+                <div class="feature-item">📍 ESP Location</div>
+                <div class="feature-item">🛡️ Non Root Device Support</div>
+                <button class="btn-primary" style="margin-top: 15px; margin-bottom: 0;">PURCHASE KEY</button>
+            </div>
+
+            <div class="prod-card">
+                <span class="badge-online">● ONLINE</span>
+                <div class="prod-title">DRIP WIRE VIP</div>
+                <div class="feature-item">⚡ Anti-Cheat Bypass</div>
+                <div class="feature-item">🎯 Precision Aim</div>
+                <div class="feature-item">📱 Android / iOS Support</div>
+                <button class="btn-primary" style="margin-top: 15px; margin-bottom: 0;">PURCHASE KEY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation Function
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Login Logic -> Go to Dashboard
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showPage('dashboard-page');
+        });
+
+        // Register Logic -> Go to Login Page
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account created successfully! Please Sign In.');
+            showPage('login-page');
+        });
+    </script>
+</body>
+</html>
